@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>DESCUBRE NICARAGUA</title>
-   <link rel="icon" type="image/png" href="photos.png">
-    <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="photos/photos.png"> <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="headera">
     <div class="logo">
-        <a href="index.html">
-            <img src="Photos/Logo.png" alt="Sabores Nicaragüenses">
-        </a>
+      <a href="index.html">
+        <img src="photos/Logo.png" alt="Sabores Nicaragüenses">
+      </a>
     </div>
 
     <nav class="menu">
@@ -25,45 +25,91 @@
     <div class="espacio"></div>
   </header>
 
-  <section class="inicio">
-    <div class="contenedor">
-      <h1>Sabores Nicaragüenses</h1>
-      <p>El rincón donde celebramos el orgullo, la historia y el sazón único de nuestra tierra. Ponete cómodo y redescubrí Nicaragua a través de su cultura y sus tradiciones. ¡Sabor 100% pinolero!</p>
-    </div>
-  </section>
+  <main> <section class="inicio">
+      <div class="contenedor">
+        <h1>Sabores Nicaragüenses</h1>
+        <p>El rincón donde celebramos el orgullo, la historia y el sazón único de nuestra tierra. Ponete cómodo y redescubrí Nicaragua a través de su cultura y sus tradiciones. ¡Sabor 100% pinolero!</p>
+      </div>
+    </section>
 
-<section>
-  <div class="box">
-    <div class="tabs">
-        <button class="bt" id="multimedia">Multimedia</button>
-        <button class="bt activo" id="contenido">Contenido</button>
-    </div>
-
-    <div class="bd">
-        <div id="sec-mult" class="galeria oculto">
-            <img src="Photos/BC.jpg" alt="Banco central" class="tarjeta">
-            <img src="Photos/BC2.jpg" alt="Informe" class="tarjeta">
-            <img src="Photos/BC3.jpg" alt="Informe" class="tarjeta">
+    <section>
+      <div class="box">
+        <div class="tabs">
+          <button class="bt" id="multimedia">Multimedia</button>
+          <button class="bt activo" id="contenido">Contenido</button>
         </div>
-        
-        <div id="sec-cont" class="cont-txt">
+
+        <div class="bd">
+          <div id="sec-mult" class="galeria oculto">
+            <img src="photos/BC.jpg" alt="Banco central" class="tarjeta">
+            <img src="photos/BC2.jpg" alt="Informe" class="tarjeta">
+            <img src="photos/BC3.jpg" alt="Informe" class="tarjeta">
+          </div>
+          
+          <div id="sec-cont" class="cont-txt">
             <span class="actualidad">Actualidad 2026</span>
             <h2 class="titulo">Nicaragua avanza: El dinamismo de nuestra tierra en 2026</h2>
             <div class="info">
-                <div class="metrica">
-                    <span class="metrica-t">Crecimiento</span>
-                    <span class="metrica-v">6.1%</span>
-                </div>
-                <div class="metrica">
-                    <span class="metrica-t">Construcción</span>
-                    <span class="metrica-v">13.4%</span>
-                </div>
+              <div class="metrica">
+                <span class="metrica-t">Crecimiento</span>
+                <span class="metrica-v">6.1%</span>
+              </div>
+              <div class="metrica">
+                <span class="metrica-t">Construcción</span>
+                <span class="metrica-v">13.4%</span>
+              </div>
             </div>
             <a href="Art.html" class="enlace">Leer artículo completo</a>
+          </div>
         </div>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
+
+    <section>
+      <h2>Destinos</h2>
+      <table border="1" style="width:70%; text-align:left;">
+        <thead> <tr>
+            <th>Lugar</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Masatepe</td>
+            <td>Ruta farallones de nimboja, senderismo y ecoturismo, antigua estación de ferrocarril.</td>
+          </tr>
+          <tr>
+            <td>Granada</td>
+            <td>Ciudad colonial con arquitectura histórica</td>
+          </tr>
+          <tr>
+            <td>Managua</td>
+            <td>Centro histórico de la capital, puerto Salvador Allende, teatros y reservas naturales urbanas.</td>
+          </tr>
+          <tr>
+            <td>León</td>
+            <td>Cultura, universidades y volcanes cercanos</td>
+          </tr>
+          <tr>
+            <td>Matagalpa</td>
+            <td>Reservas naturales, catedral de san pedro, ruta del café.</td>
+          </tr>
+          <tr>
+            <td>Diriamba</td>
+            <td>Geografía accidentada y biodiversidad, museo ecológico del trópico.</td>
+          </tr>
+          <tr>
+            <td>Corn Island</td>
+            <td>Playas caribeñas y buceo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Sabores Nicaragüenses</p>
+  </footer>
 
   <script>
     const Multimedia = document.getElementById('multimedia');
@@ -87,48 +133,6 @@
         secCont.classList.remove('oculto');
         secMult.classList.add('oculto');
     });
-</script>
-
-  <section>
-    <h2>Destinos</h2>
-    <table border="1" style="width:70%; text-align:left;">
-    <tr>
-      <th>Lugar</th>
-      <th>Descripción</th>
-    </tr>
-    <tr>
-      <td>Masatepe</td>
-      <td>Ruta farallones de nimboja, senderismo y ecoturismo ,antigua estación de ferrocarril.</td>
-    </tr>
-    <tr>
-      <td>Granada</td>
-      <td>Ciudad colonial con arquitectura histórica</td>
-    </tr>
-    <tr>
-      <td>Managua</td>
-      <td>Centro histórico de la capital, puerto Salvador Allende, teatros y reservas naturales urbanas.</td>
-    </tr>
-    <tr>
-      <td>León</td>
-      <td>Cultura, universidades y volcanes cercanos</td>
-    </tr>
-    <tr>
-      <td>Matagalpa</td>
-      <td>Reservas naturales ,catedral de san pedro ,ruta del café.</td>
-    </tr>
-    <tr>
-      <td>Diriamba</td>
-      <td>Geografía accidentada y biodiversidad ,museo ecológico del trópico.</td>
-    </tr>
-    <tr>
-      <td>Corn Island</td>
-      <td>Playas caribeñas y buceo</td>
-    </tr>
-  </table>
-  </section>
-  
-  <footer>
-    <p>© 2026 </p>
-  </footer>
+  </script>
 </body>
 </html>
