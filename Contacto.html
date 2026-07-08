@@ -2,11 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>contacto</title>
-   <link rel="icon" type="image/png" href="Photos/Gas.jpg">
-     <link rel="stylesheet" href="Contacto.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Sabores Nicaragüenses</title>
+  <link rel="icon" type="image/png" href="Photos/Gas.jpg">
+  <link rel="stylesheet" href="Contacto.css">
 </head>
 <body>
+
   <header class="headera">
     <div class="logo">
         <a href="index.html">
@@ -21,37 +23,44 @@
       <a href="Cultura.html">Cultura</a>
       <a href="Contacto.html">Contacto</a>
     </nav>
-    
   </header>
-  <div class="contact-container">
-    <form action="https://formsubmit.co/carolinachavezcc9339898@gmail.com" method="POST">
 
-      <h2>Contactanos</h2>
+  <main>
+    <div class="contact-container">
+      <form action="https://formsubmit.co/carolinachavezcc9339898@gmail.com" method="POST">
+        <h2>Contáctanos</h2>
         <div class="input-group">
-            <label for="name ">Nombre</label>
-            <input type="text" name="name" id="name" placeholder="Nombre" >
-            <label for="phone">Telefono</label>
-            <input type="tel" name="phone" id="phone" placeholder="Telefono">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" placeholder="Nombre" required>
+            
+            <label for="phone">Teléfono</label>
+            <input type="tel" name="phone" id="phone" placeholder="Teléfono">
+            
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email">
-            <label form="mensaje">Mensaje</label>
-            <textarea name="mensaje" id="Mensaje" cols="10" rows="5" placeholder="Mensaje"></textarea>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            
+            <label for="Mensaje">Mensaje</label>
+            <textarea name="mensaje" id="Mensaje" cols="10" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
             <input class="btn" type="submit" value="Enviar mensaje">
         </div>
-
-    </form> 
-  </div>
-</section>
-
-<div class="encf" id="contef">
-    <div class="burbd" id="disp">Encuesta</div>
-    <div class="burbpu" id="burb">
-        <div id="encdc"></div>
+      </form> 
     </div>
-</div>
 
-<script>
+    <!-- Widget de Encuesta Flotante -->
+    <div class="encf" id="contef">
+        <div class="burbd" id="disp">Encuesta</div>
+        <div class="burbpu" id="burb">
+            <div id="encdc"></div>
+        </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Sabores Nicaragüenses. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
     (function() {
         const cont = document.getElementById('contef');
         const disp = document.getElementById('disp');
@@ -95,7 +104,7 @@
 
         const respuestas = {};
 
-        function Invitacion() {
+        function Invitation() {
             contD.innerHTML = `
                 <span class="titulo">Sabores Nicaragüenses</span>
                 <h4>¿Le gustaría calificar nuestro sitio?</h4>
@@ -224,7 +233,7 @@
             if (!moodF) burb.classList.remove('visible');
         });
 
-        Invitacion();
+        Invitation();
 
         function Movible(elemento) {
             let posInicialX = 0, posInicialY = 0, posActualX = 0, posActualY = 0;
@@ -244,11 +253,11 @@
                 e = e || window.event;
                 e.preventDefault();
                 posInicialX = posActualX - e.clientX;
-                posInitialY = posActualY - e.clientY;
+                posInicialY = posActualY - e.clientY;
                 posActualX = e.clientX;
                 posActualY = e.clientY;
                 
-                let finalTop = (elemento.offsetTop - posInitialY);
+                let finalTop = (elemento.offsetTop - posInicialY);
                 let finalLeft = (elemento.offsetLeft - posInicialX);
 
                 elemento.style.setProperty('top', finalTop + "px", 'important');
@@ -261,7 +270,7 @@
             }
         }
     })();
-</script>
+  </script>
     
 </body>
 </html>
