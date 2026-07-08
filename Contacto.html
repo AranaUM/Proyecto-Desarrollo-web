@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>contacto</title>
+   <link rel="icon" type="image/png" href="Photos/Gas.jpg">
+     <link rel="stylesheet" href="Contacto.css">
+</head>
+<body>
+  <header class="headera">
+    <div class="logo">
+        <a href="Principal.html">
+            <img src="Photos/Logo.png" alt="Sabores Nicaragüenses">
+        </a>
+    </div>
+    <nav class="menu">
+      <a href="Principal.html">Sabores Nicaragüenses</a>
+      <a href="Destinos.html">Destinos</a>
+      <a href="Gastronomia.html">Gastronomia</a>
+      <a href="Cultura.html">Cultura</a>
+      <a href="Contacto.html">Contacto</a>
+    </nav>
+    
+
+  </header>
+
+  <div class="contact-container">
+    <form action="https://formsubmit.co/carolinachavezcc9339898@gmail.com" method="POST">
+
+      <h2>Contactanos</h2>
+        <div class="input-group">
+            <label for="name ">Nombre</label>
+            <input type="text" name="name" id="name" placeholder="Nombre" >
+            <label for="phone">Telefono</label>
+            <input type="tel" name="phone" id="phone" placeholder="Telefono">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <label form="mensaje">Mensaje</label>
+            <textarea name="mensaje" id="Mensaje" cols="10" rows="5" placeholder="Mensaje"></textarea>
+
+            <input class="btn" type="submit" value="Enviar mensaje">
+        </div>
+
+    </form> 
+  </div>
+</section>
+
+<div class="encf" id="contef">
+    <div class="burbd" id="disp">Encuesta</div>
+    <div class="burbpu" id="burb">
+        <div id="encdc"></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const cont = document.getElementById('contef');
+        const disp = document.getElementById('disp');
+        const burb = document.getElementById('burb');
+        const contD = document.getElementById('encdc');
+
+        let moodF = false;
+        let bloqueo = false;
+        let Actual = 1;
+        const Pasos = 4;
+
+        const Preguntas = [
+            { 
+                id: "p1", 
+                tipo: "select",
+                titulo: "1. ¿Cuál era tu objetivo principal al visitar nuestra página hoy?", 
+                opciones: [
+                    "Buscar recetas o dónde comer comida típica nica", 
+                    "Encontrar lugares turísticos y destinos para visitar", 
+                    "Conocer más sobre historia, tradiciones o cultura nicaragüense", 
+                    "Solo explorar y descubrir cosas nuevas de Nicaragua"
+                ] 
+            },
+            { 
+                id: "p2", 
+                tipo: "select",
+                titulo: "2. ¿Lograste cumplir tu objetivo?", 
+                opciones: ["Sí", "No", "Casi"] 
+            },
+            { 
+                id: "p3", 
+                tipo: "estrellas",
+                titulo: "3. ¿Qué tan fluida y rápida sentiste la página?"
+            },
+            { 
+                id: "p4", 
+                tipo: "texto",
+                titulo: "4. ¿Hay algo que te gustaría que mejoremos o añadamos?"
+            }
+        ];
+
+        const respuestas = {};
+
+        function Invitacion() {
+            contD.innerHTML = `
+                <span class="titulo">Sabores Nicaragüenses</span>
+                <h4>¿Le gustaría calificar nuestro sitio?</h4>
+                <div class="opciones">
+                    <button class="btn-encuesta btn-si" id="btn-si">Sí</button>
+                    <button class="btn-encuesta btn-no" id="btn-no">No</button>
+                </div>
+            `;
+
+            document.getElementById('btn-no').addEventListener('click', (e) => {
+                e.stopPropagation();
+                bloqueo = true;
+                burb.classList.remove('visible');
+            });
+
+            document.getElementById('btn-si').addEventListener('click', (e) => {
+                e.stopPropagation();
+                moodF = true;
+                
+                const recuadro = burb.getBoundingClientRect();
+                
+                burb.style.setProperty('top', recuadro.top + "px", 'important');
+                burb.style.setProperty('left', recuadro.left + "px", 'important');
+                burb.style.setProperty('bottom', 'auto', 'important');
+                burb.style.setProperty('right', 'auto', 'important');
+                
+                document.body.appendChild(burb);
+                burb.classList.add('fija-movible');
+                
+                cargarPregunta(1);
+                Movible(burb);
+            });
+        }
+
+        function cargarPregunta(paso) {
+            Actual = paso;
+            const item = Preguntas[paso - 1];
+            const porcentajeProgreso = (paso / Pasos) * 100;
+            const textoBoton = (paso === Pasos) ? "Enviar" : "Siguiente";
+
+            let inputHTML = '';
+
+            if (item.tipo === "select") {
+                let opcionesHTML = `<option value="" disabled selected>Selecciona una opción...</option>`;
+                item.opciones.forEach(opc => {
+                    opcionesHTML += `<option value="${opc}">${opc}</option>`;
+                });
+                inputHTML = `<select id="control">${opcionesHTML}</select>`;
+
+            } else if (item.tipo === "estrellas") {
+                inputHTML = `
+                    <div class="contenedor-estrellas">
+                        <span class="estrella" data-valor="5">★</span>
+                        <span class="estrella" data-valor="4">★</span>
+                        <span class="estrella" data-valor="3">★</span>
+                        <span class="estrella" data-valor="2">★</span>
+                        <span class="estrella" data-valor="1">★</span>
+                    </div>
+                    <input type="hidden" id="control" value="">
+                `;
+
+            } else if (item.tipo === "texto") {
+                inputHTML = `<textarea id="control" placeholder="¿Más recetas? ¿Más destinos? Escribe tus sugerencias... (Opcional)"></textarea>`;
+            }
+
+            contD.innerHTML = `
+                <span class="titulo">Sabores Nicaragüenses</span>
+                <div class="barra">
+                    <div class="prog-int" style="width: ${porcentajeProgreso}%;"></div>
+                </div>
+                <h4>${item.titulo}</h4>
+                ${inputHTML}
+                <button type="button" class="btn-encuesta btn-enviar" id="btn-siguiente">${textoBoton}</button>
+            `;
+
+            const control = document.getElementById('control');
+            const btnSiguiente = document.getElementById('btn-siguiente');
+
+            if (item.tipo === "select") {
+                btnSiguiente.disabled = true;
+                control.addEventListener('change', () => {
+                    btnSiguiente.disabled = (control.value === "");
+                });
+            } else if (item.tipo === "estrellas") {
+                btnSiguiente.disabled = true;
+                const estrellas = contD.querySelectorAll('.estrella');
+                estrellas.forEach(est => {
+                    est.addEventListener('click', () => {
+                        const valor = est.getAttribute('data-valor');
+                        control.value = valor;
+                        
+                        estrellas.forEach(e => {
+                            if (parseInt(e.getAttribute('data-valor')) <= parseInt(valor)) {
+                                e.classList.add('marcada');
+                            } else {
+                                e.classList.remove('marcada');
+                            }
+                        });
+                        btnSiguiente.disabled = false;
+                    });
+                });
+            } else if (item.tipo === "texto") {
+                btnSiguiente.disabled = false;
+            }
+
+            btnSiguiente.addEventListener('click', () => {
+                respuestas[item.id] = control.value;
+
+                if (Actual < Pasos) {
+                    cargarPregunta(Actual + 1);
+                } else {
+                    console.log("Resultados de la Encuesta Sabores Nicaragüenses:", respuestas);
+                    alert("¡Muchas gracias por ayudarnos a mejorar Sabores Nicaragüenses!");
+                    burb.style.setProperty('display', 'none', 'important');
+                    disp.style.setProperty('display', 'none', 'important');
+                    moodF = false;
+                }
+            });
+        }
+
+        cont.addEventListener('mouseenter', () => {
+            if (!moodF && !bloqueo) burb.classList.add('visible');
+        });
+
+        cont.addEventListener('mouseleave', () => {
+            if (!moodF) burb.classList.remove('visible');
+        });
+
+        Invitacion();
+
+        function Movible(elemento) {
+            let posInicialX = 0, posInicialY = 0, posActualX = 0, posActualY = 0;
+            elemento.onmousedown = arrastrarMouseDown;
+
+            function arrastrarMouseDown(e) {
+                e = e || window.event;
+                if(e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION' || e.target.tagName === 'BUTTON' || e.target.tagName === 'TEXTAREA' || e.target.classList.contains('estrella')) return;
+                e.preventDefault();
+                posActualX = e.clientX;
+                posActualY = e.clientY;
+                document.onmouseup = cerrar;
+                document.onmousemove = Arrastre;
+            }
+
+            function Arrastre(e) {
+                e = e || window.event;
+                e.preventDefault();
+                posInicialX = posActualX - e.clientX;
+                posInitialY = posActualY - e.clientY;
+                posActualX = e.clientX;
+                posActualY = e.clientY;
+                
+                let finalTop = (elemento.offsetTop - posInitialY);
+                let finalLeft = (elemento.offsetLeft - posInicialX);
+
+                elemento.style.setProperty('top', finalTop + "px", 'important');
+                elemento.style.setProperty('left', finalLeft + "px", 'important');
+            }
+
+            function cerrar() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    })();
+</script>
+    
+</body>
+</html>
