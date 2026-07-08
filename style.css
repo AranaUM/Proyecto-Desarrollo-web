@@ -73,7 +73,7 @@ h2 {
 }
 .inicio {
     
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Photos/FD.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photos/FD.jpg');
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat; 
@@ -87,7 +87,7 @@ h2 {
 
 .article {
     
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Photos/Articl.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photos/Articl.jpg');
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat; 
@@ -101,7 +101,7 @@ h2 {
 
 .Destn {
     
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Photos/Destinos.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photos/Destinos.jpg');
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat; 
